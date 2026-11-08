@@ -1,10 +1,11 @@
 buildscript {
     repositories {
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.4.6"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.4.7"
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.6"
         classpath "org.grails.plugins:hibernate5:7.3.0"
     }
@@ -22,6 +23,7 @@ apply plugin: "com.github.erdi.webdriver-binaries"
 apply plugin: "org.grails.grails-gsp"
 
 repositories {
+    mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -51,14 +53,14 @@ dependencies {
     implementation "org.grails:grails-plugin-services"
     implementation "org.grails:grails-plugin-url-mappings"
     implementation "org.grails:grails-web-boot"
-    implementation "org.hibernate:hibernate-core:5.6.9.Final"
+    implementation "org.hibernate:hibernate-core:5.6.11.Final"
     implementation "org.springframework.boot:spring-boot-autoconfigure"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-logging"
     implementation "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     profile "org.grails.profiles:web"
-    runtimeOnly "com.bertramlabs.plugins:asset-pipeline-grails:3.4.6"
+    runtimeOnly "com.bertramlabs.plugins:asset-pipeline-grails:3.4.7"
     runtimeOnly "com.h2database:h2"
     runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
