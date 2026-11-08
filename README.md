@@ -18,28 +18,16 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v7.1.0...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.1...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.2...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.3...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.4...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.5...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.6...v7.2.0
-* https://github.com/rainboyan/grace-versions/compare/v7.1.7...v7.2.0
+* https://github.com/rainboyan/grace-versions/compare/v7.1.7...v7.2.1
 * https://github.com/rainboyan/grace-versions/compare/v7.2.0...v7.2.1
-* https://github.com/rainboyan/grace-versions/compare/v7.2.0...v7.2.2
+* https://github.com/rainboyan/grace-versions/compare/v7.2.1...v7.2.2
+* https://github.com/rainboyan/grace-versions/compare/v7.2.1...v7.2.3
 
 From the git cli:
 
 ```
-git diff v7.1.0..v7.2.0
-git diff v7.1.1..v7.2.0
-git diff v7.1.2..v7.2.0
-git diff v7.1.3..v7.2.0
-git diff v7.1.4..v7.2.0
-git diff v7.1.5..v7.2.0
-git diff v7.1.6..v7.2.0
-git diff v7.1.7..v7.2.0
+git diff v7.1.7..v7.2.1
 git diff v7.2.0..v7.2.1
-git diff v7.2.0..v7.2.2
+git diff v7.2.1..v7.2.2
+git diff v7.2.1..v7.2.3
 ```
