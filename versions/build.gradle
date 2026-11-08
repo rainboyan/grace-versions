@@ -68,11 +68,11 @@ dependencies {
     testImplementation "org.grails:grails-gorm-testing-support"
     testImplementation "org.grails:grails-web-testing-support"
     testImplementation "org.mockito:mockito-core"
-    testImplementation "org.seleniumhq.selenium:selenium-api:3.141.59"
-    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:3.141.59"
-    testImplementation "org.seleniumhq.selenium:selenium-support:3.141.59"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:3.141.59"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:3.141.59"
+    testImplementation "org.seleniumhq.selenium:selenium-api:4.0.0"
+    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.0.0"
+    testImplementation "org.seleniumhq.selenium:selenium-support:4.0.0"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.0.0"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.0.0"
 }
 
 bootRun {
@@ -105,7 +105,7 @@ assets {
 
 webdriverBinaries {
     chromedriver '2.45.0'
-    geckodriver '0.24.0'
+    geckodriver '0.30.0'
 }
 
 tasks.withType(Test) {
