@@ -2,12 +2,6 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url "https://repo.grails.org/grails/restricted" }
-        maven {
-           url = 'https://repository.apache.org/content/groups/snapshots'
-           content {
-              includeVersionByRegex('org[.]apache[.](grails|groovy).*', '.*', '.*-SNAPSHOT')
-           }
-        }
     }
     dependencies {
         classpath platform("org.apache.grails:grails-bom:$grailsVersion")
@@ -30,12 +24,6 @@ apply plugin: "org.apache.grails.gradle.grails-gsp"
 repositories {
     mavenCentral()
     maven { url "https://repo.grails.org/grails/restricted" }
-    maven {
-       url = 'https://repository.apache.org/content/groups/snapshots'
-       content {
-          includeVersionByRegex('org[.]apache[.](grails|groovy).*', '.*', '.*-SNAPSHOT')
-       }
-    }
 }
 
 dependencies {
@@ -78,6 +66,11 @@ compileJava.options.release = 17
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
+}
+
+// https://github.com/apache/grails-core/issues/15321
+tasks.withType(GroovyCompile).configureEach {
+    groovyOptions.optimizationOptions.indy = false
 }
 
 assets {
