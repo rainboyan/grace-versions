@@ -18,28 +18,30 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v7.0.0...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.1...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.2...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.3...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.4...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.5...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.6...v7.0.8
-* https://github.com/rainboyan/grace-versions/compare/v7.0.7...v7.0.8
+* https://github.com/rainboyan/grace-versions/compare/v7.0.0...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.1...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.2...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.3...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.4...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.5...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.6...v7.0.9
+* https://github.com/rainboyan/grace-versions/compare/v7.0.7...v7.0.9
 * https://github.com/rainboyan/grace-versions/compare/v7.0.8...v7.0.9
-* https://github.com/rainboyan/grace-versions/compare/v7.0.8...v7.0.10
+* https://github.com/rainboyan/grace-versions/compare/v7.0.9...v7.0.10
+* https://github.com/rainboyan/grace-versions/compare/v7.0.9...v7.0.11
 
 From the git cli:
 
 ```
-git diff v7.0.0..v7.0.8
-git diff v7.0.1..v7.0.8
-git diff v7.0.2..v7.0.8
-git diff v7.0.3..v7.0.8
-git diff v7.0.4..v7.0.8
-git diff v7.0.5..v7.0.8
-git diff v7.0.6..v7.0.8
-git diff v7.0.7..v7.0.8
+git diff v7.0.0..v7.0.9
+git diff v7.0.1..v7.0.9
+git diff v7.0.2..v7.0.9
+git diff v7.0.3..v7.0.9
+git diff v7.0.4..v7.0.9
+git diff v7.0.5..v7.0.9
+git diff v7.0.6..v7.0.9
+git diff v7.0.7..v7.0.9
 git diff v7.0.8..v7.0.9
-git diff v7.0.8..v7.0.10
+git diff v7.0.9..v7.0.10
+git diff v7.0.9..v7.0.11
 ```
