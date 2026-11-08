@@ -18,20 +18,20 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v5.3.0...v5.3.4
-* https://github.com/rainboyan/grace-versions/compare/v5.3.1...v5.3.4
-* https://github.com/rainboyan/grace-versions/compare/v5.3.2...v5.3.4
-* https://github.com/rainboyan/grace-versions/compare/v5.3.3...v5.3.4
+* https://github.com/rainboyan/grace-versions/compare/v5.3.0...v5.3.5
+* https://github.com/rainboyan/grace-versions/compare/v5.3.1...v5.3.5
+* https://github.com/rainboyan/grace-versions/compare/v5.3.2...v5.3.5
+* https://github.com/rainboyan/grace-versions/compare/v5.3.3...v5.3.5
 * https://github.com/rainboyan/grace-versions/compare/v5.3.4...v5.3.5
-* https://github.com/rainboyan/grace-versions/compare/v5.3.4...v5.3.6
+* https://github.com/rainboyan/grace-versions/compare/v5.3.5...v5.3.6
 
 From the git cli:
 
 ```
-git diff v5.3.0..v5.3.4
-git diff v5.3.1..v5.3.4
-git diff v5.3.2..v5.3.4
-git diff v5.3.3..v5.3.4
+git diff v5.3.0..v5.3.5
+git diff v5.3.1..v5.3.5
+git diff v5.3.2..v5.3.5
+git diff v5.3.3..v5.3.5
 git diff v5.3.4..v5.3.5
-git diff v5.3.4..v5.3.6
+git diff v5.3.5..v5.3.6
 ```
