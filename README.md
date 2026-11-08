@@ -18,18 +18,22 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M1...v8.0.0-M5
-* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M2...v8.0.0-M5
-* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M3...v8.0.0-M5
-* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M4...v8.0.0-M5
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M1...v8.0.0-M6
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M2...v8.0.0-M6
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M3...v8.0.0-M6
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M4...v8.0.0-M6
 * https://github.com/rainboyan/grace-versions/compare/v8.0.0-M5...v8.0.0-M6
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M6...v8.0.0-RC1
+* https://github.com/rainboyan/grace-versions/compare/v8.0.0-M6...v8.0.0-RC2
 
 From the git cli:
 
 ```
-git diff v8.0.0-M1..v8.0.0-M5
-git diff v8.0.0-M2..v8.0.0-M5
-git diff v8.0.0-M3..v8.0.0-M5
-git diff v8.0.0-M4..v8.0.0-M5
+git diff v8.0.0-M1..v8.0.0-M6
+git diff v8.0.0-M2..v8.0.0-M6
+git diff v8.0.0-M3..v8.0.0-M6
+git diff v8.0.0-M4..v8.0.0-M6
 git diff v8.0.0-M5..v8.0.0-M6
+git diff v8.0.0-M6..v8.0.0-RC1
+git diff v8.0.0-M6..v8.0.0-RC2
 ```
