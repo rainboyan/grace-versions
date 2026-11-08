@@ -18,16 +18,16 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v6.1.2...v6.2.1
-* https://github.com/rainboyan/grace-versions/compare/v6.2.0...v6.2.1
+* https://github.com/rainboyan/grace-versions/compare/v6.1.2...v6.2.2
+* https://github.com/rainboyan/grace-versions/compare/v6.2.0...v6.2.2
 * https://github.com/rainboyan/grace-versions/compare/v6.2.1...v6.2.2
-* https://github.com/rainboyan/grace-versions/compare/v6.2.1...v6.2.3
+* https://github.com/rainboyan/grace-versions/compare/v6.2.2...v6.2.3
 
 From the git cli:
 
 ```
-git diff v6.1.2..v6.2.1
-git diff v6.2.0..v6.2.1
+git diff v6.1.2..v6.2.2
+git diff v6.2.0..v6.2.2
 git diff v6.2.1..v6.2.2
-git diff v6.2.1..v6.2.3
+git diff v6.2.2..v6.2.3
 ```
