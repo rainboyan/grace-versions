@@ -27,7 +27,6 @@ repositories {
 }
 
 dependencies {
-    console "org.apache.grails:grails-console"
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     implementation "org.apache.grails:grails-core"
     implementation "org.apache.grails:grails-data-hibernate5"
