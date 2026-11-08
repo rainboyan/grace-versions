@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.0.1"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.0.2"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -70,7 +70,7 @@ dependencies {
     runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.0.1"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.0.2"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
