@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.5"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.6"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -66,7 +66,7 @@ dependencies {
     runtimeOnly "jakarta.xml.bind:jakarta.xml.bind-api:2.3.3"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
     runtimeOnly "org.glassfish:jakarta.el:3.0.4"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.5"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.6"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
