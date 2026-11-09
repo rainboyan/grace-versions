@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.3"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.4"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -63,10 +63,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
-    runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
+    runtimeOnly "jakarta.el:jakarta.el-api:3.0.3"
+    runtimeOnly "jakarta.xml.bind:jakarta.xml.bind-api:2.3.3"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
-    runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.3"
+    runtimeOnly "org.glassfish:jakarta.el:3.0.4"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.4"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
@@ -104,30 +105,23 @@ tasks.withType(Test) {
     useJUnitPlatform()
 }
 
-
 assets {
     minifyJs = true
     minifyCss = true
 }
 
 webdriverBinaries {
-    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
-        chromedriver {
-            version = '121.0.6167.85'
-            fallbackTo32Bit = true
-        }
-        geckodriver '0.34.0'
+    chromedriver {
+        version = '122.0.6260.0'
+        fallbackTo32Bit = true
     }
+    geckodriver '0.33.0'
 }
 
 tasks.withType(Test) {
+    useJUnitPlatform()
     systemProperty "geb.env", System.getProperty('geb.env')
     systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
-        systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
-        systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
-    } else {
-        systemProperty 'webdriver.chrome.driver', "${System.getenv('CHROMEWEBDRIVER')}/chromedriver"
-        systemProperty 'webdriver.gecko.driver', "${System.getenv('GECKOWEBDRIVER')}/geckodriver"
-    }
+    systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
+    systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
 }
