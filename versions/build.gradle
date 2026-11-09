@@ -8,7 +8,7 @@ plugins {
     id "org.graceframework.grace-gsp"
 }
 
-group "app"
+group = "app"
 
 repositories {
     mavenCentral()
@@ -50,7 +50,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:6.2.0-M2"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:6.2.0-RC1"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
