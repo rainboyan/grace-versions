@@ -1,6 +1,6 @@
 package app
 
-class BootStrap {
+class Bootstrap {
 
     def init() {
     }

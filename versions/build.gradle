@@ -2,7 +2,7 @@ plugins {
     id "eclipse"
     id "idea"
     id "war"
-    id "org.graceframework.grace-web"
+    id "org.graceframework.grace-app"
     id "org.graceframework.asset-pipeline"
     id "org.graceframework.grace-gsp"
 }
@@ -18,56 +18,32 @@ configurations {
 }
 
 dependencies {
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
     console "org.graceframework:grace-console"
-    implementation "org.graceframework.plugins:async"
-    implementation "org.graceframework.plugins:cache"
-    implementation "org.graceframework.plugins:database-migration"
-    implementation "org.graceframework.plugins:events"
-    implementation "org.graceframework.plugins:fields"
-    implementation "org.graceframework.plugins:hibernate"
-    implementation "org.graceframework.plugins:scaffolding"
-    implementation "org.graceframework:grace-boot"
-    implementation "org.graceframework:grace-core"
-    implementation "org.graceframework:grace-logging"
-    implementation "org.graceframework:grace-plugin-codecs"
-    implementation "org.graceframework:grace-plugin-controllers"
-    implementation "org.graceframework:grace-plugin-converters"
-    implementation "org.graceframework:grace-plugin-databinding"
-    implementation "org.graceframework:grace-plugin-datasource"
-    implementation "org.graceframework:grace-plugin-domain-class"
+    implementation "org.graceframework:grace-boot-async"
+    implementation "org.graceframework:grace-boot-cache"
+    implementation "org.graceframework:grace-boot-events"
+    implementation "org.graceframework:grace-boot-hibernate"
+    implementation "org.graceframework:grace-boot-logging"
+    implementation "org.graceframework:grace-boot-persistence"
+    implementation "org.graceframework:grace-boot-plugin"
+    implementation "org.graceframework:grace-boot-validation"
+    implementation "org.graceframework:grace-boot-web"
+    implementation "org.graceframework:grace-plugin-database-migration"
+    implementation "org.graceframework:grace-plugin-fields"
     implementation "org.graceframework:grace-plugin-gsp"
-    implementation "org.graceframework:grace-plugin-i18n"
-    implementation "org.graceframework:grace-plugin-interceptors"
-    implementation "org.graceframework:grace-plugin-management"
-    implementation "org.graceframework:grace-plugin-rest"
+    implementation "org.graceframework:grace-plugin-scaffolding"
     implementation "org.graceframework:grace-plugin-services"
-    implementation "org.graceframework:grace-plugin-url-mappings"
-    implementation "org.springframework.boot:spring-boot-starter-actuator"
-    implementation "org.springframework.boot:spring-boot-starter-logging"
-    implementation "org.springframework.boot:spring-boot-starter-validation"
-    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.graceframework:grace-plugin-taglibs"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
     runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin"
-    testImplementation "org.graceframework.plugins:geb"
-    testImplementation "org.graceframework:grace-test-support"
-    testImplementation "org.mockito:mockito-core"
-    testImplementation "org.seleniumhq.selenium:selenium-api"
-    testImplementation "org.seleniumhq.selenium:selenium-support"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver"
+    testImplementation "org.graceframework:grace-boot-test"
 }
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-tasks.withType(Jar) {
-    configure {
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 }
 
@@ -81,8 +57,3 @@ tasks.withType(Test) {
     useJUnitPlatform()
 }
 
-
-tasks.withType(Test) {
-    systemProperty "geb.env", System.getProperty('geb.env')
-    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-}
