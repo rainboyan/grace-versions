@@ -1,19 +1,18 @@
 buildscript {
     repositories {
     mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
     maven { url "https://repo.gradle.org/gradle/libs-releases" }
     maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
     implementation "org.graceframework:grace-gradle-plugin:$graceVersion"
-    implementation "org.graceframework.plugins:asset-pipeline-gradle:5.0.2"
+    implementation "org.graceframework.plugins:asset-pipeline-gradle:6.0.0-M2"
     implementation "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
 
-version "0.1"
 group "app"
+version "0.0.1-SNAPSHOT"
 
     id "eclipse"
     id "idea"
@@ -25,13 +24,27 @@ group "app"
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
 }
 
 configurations {
     developmentOnly
     runtimeClasspath {
         extendsFrom developmentOnly
+    }
+    all {
+        resolutionStrategy {
+            // Force groovy using 4.0
+            dependencySubstitution {
+                substitute(module("org.codehaus.groovy:groovy")).using(module("org.apache.groovy:groovy:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-ant")).using(module("org.apache.groovy:groovy-ant:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-dateutil")).using(module("org.apache.groovy:groovy-dateutil:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-json")).using(module("org.apache.groovy:groovy-json:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-jmx")).using(module("org.apache.groovy:groovy-jmx:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-sql")).using(module("org.apache.groovy:groovy-sql:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-templates")).using(module("org.apache.groovy:groovy-templates:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-xml")).using(module("org.apache.groovy:groovy-xml:4.0.10"))
+            }
+        }
     }
 }
 
@@ -43,7 +56,6 @@ dependencies {
     implementation "org.graceframework.plugins:cache"
     implementation "org.graceframework.plugins:events"
     implementation "org.graceframework.plugins:fields"
-    implementation "org.graceframework.plugins:gsp"
     implementation "org.graceframework.plugins:hibernate5"
     implementation "org.graceframework.plugins:scaffolding"
     implementation "org.graceframework:grace-boot"
@@ -54,12 +66,14 @@ dependencies {
     implementation "org.graceframework:grace-plugin-databinding"
     implementation "org.graceframework:grace-plugin-datasource"
     implementation "org.graceframework:grace-plugin-domain-class"
+    implementation "org.graceframework:grace-plugin-gsp"
     implementation "org.graceframework:grace-plugin-i18n"
     implementation "org.graceframework:grace-plugin-interceptors"
+    implementation "org.graceframework:grace-plugin-management"
     implementation "org.graceframework:grace-plugin-rest"
     implementation "org.graceframework:grace-plugin-services"
     implementation "org.graceframework:grace-plugin-url-mappings"
-    implementation "org.hibernate:hibernate-core:5.6.15.Final"
+    implementation "org.hibernate:hibernate-core-jakarta:5.6.15.Final"
     implementation "org.springframework.boot:spring-boot-autoconfigure"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-logging"
@@ -67,19 +81,23 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
-    runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
+    runtimeOnly "jakarta.xml.bind:jakarta.xml.bind-api:4.0.0"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
-    runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.0.2"
+    runtimeOnly "org.glassfish:jakarta.el:4.0.2"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:6.0.0-M2"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
-    testImplementation "org.seleniumhq.selenium:selenium-api:4.16.1"
-    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.16.1"
-    testImplementation "org.seleniumhq.selenium:selenium-support:4.16.1"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.16.1"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.16.1"
+    testImplementation "org.seleniumhq.selenium:selenium-api:4.2.2"
+    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.2.2"
+    testImplementation "org.seleniumhq.selenium:selenium-support:4.2.2"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.2.2"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.2.2"
+}
+
+java {
+    sourceCompatibility = '17'
 }
 
 bootRun {
@@ -113,10 +131,10 @@ assets {
 webdriverBinaries {
     if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
         chromedriver {
-            version = '2.45.0'
+            version = '121.0.6167.85'
             fallbackTo32Bit = true
         }
-        geckodriver '0.30.0'
+        geckodriver '0.34.0'
     }
 }
 
