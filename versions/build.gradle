@@ -4,7 +4,6 @@ plugins {
     id "war"
     id "org.graceframework.grace-web"
     id "org.graceframework.asset-pipeline"
-    id "com.github.erdi.webdriver-binaries"
     id "org.graceframework.grace-gsp"
 }
 
@@ -54,11 +53,10 @@ dependencies {
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
-    testImplementation "org.seleniumhq.selenium:selenium-api:4.2.2"
-    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.2.2"
-    testImplementation "org.seleniumhq.selenium:selenium-support:4.2.2"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.2.2"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.2.2"
+    testImplementation "org.seleniumhq.selenium:selenium-api"
+    testImplementation "org.seleniumhq.selenium:selenium-support"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver"
 }
 
 java {
@@ -83,17 +81,8 @@ tasks.withType(Test) {
     useJUnitPlatform()
 }
 
-webdriverBinaries {
-    chromedriver {
-        version = '126.0.6478.126'
-        fallbackTo32Bit = true
-    }
-    geckodriver '0.33.0'
-}
 
 tasks.withType(Test) {
     systemProperty "geb.env", System.getProperty('geb.env')
     systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
-    systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
 }

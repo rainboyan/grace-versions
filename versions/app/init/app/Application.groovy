@@ -1,7 +1,7 @@
 package app
 
-import grails.boot.Grails
 import groovy.transform.CompileStatic
+import grails.boot.Grails
 
 @CompileStatic
 class Application {
