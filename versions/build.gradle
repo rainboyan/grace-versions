@@ -9,7 +9,6 @@ plugins {
 }
 
 group "app"
-version "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -24,6 +23,7 @@ dependencies {
     console "org.graceframework:grace-console"
     implementation "org.graceframework.plugins:async"
     implementation "org.graceframework.plugins:cache"
+    implementation "org.graceframework.plugins:database-migration"
     implementation "org.graceframework.plugins:events"
     implementation "org.graceframework.plugins:fields"
     implementation "org.graceframework.plugins:hibernate5"
@@ -51,10 +51,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
-    runtimeOnly "jakarta.xml.bind:jakarta.xml.bind-api:4.0.0"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
-    runtimeOnly "org.glassfish:jakarta.el:4.0.2"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:6.0.0-M2"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:6.0.0-M3"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
@@ -93,10 +91,10 @@ assets {
 
 webdriverBinaries {
     chromedriver {
-        version = '121.0.6167.85'
+        version = '122.0.6260.0'
         fallbackTo32Bit = true
     }
-    geckodriver '0.34.0'
+    geckodriver '0.33.0'
 }
 
 tasks.withType(Test) {
