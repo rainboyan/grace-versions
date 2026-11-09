@@ -1,7 +1,6 @@
 plugins {
     id "eclipse"
     id "idea"
-    id "war"
     id "org.graceframework.grace-app"
     id "org.graceframework.asset-pipeline"
     id "org.graceframework.grace-gsp"
