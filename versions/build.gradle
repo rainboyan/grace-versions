@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.2"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.3"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -28,13 +28,10 @@ repositories {
 
 configurations {
     developmentOnly
-    runtimeClasspath {
-        extendsFrom developmentOnly
-    }
 }
 
 dependencies {
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    developmentOnly('org.springframework.boot:spring-boot-devtools')
     compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.graceframework:grace-console"
     implementation "org.graceframework.plugins:async"
@@ -69,7 +66,7 @@ dependencies {
     runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.2"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.3"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
