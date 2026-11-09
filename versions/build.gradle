@@ -1,19 +1,4 @@
-buildscript {
-    repositories {
-    mavenCentral()
-    maven { url "https://repo.gradle.org/gradle/libs-releases" }
-    maven { url "https://plugins.gradle.org/m2/" }
-    }
-    dependencies {
-    implementation "org.graceframework:grace-gradle-plugin:$graceVersion"
-    implementation "org.graceframework.plugins:asset-pipeline-gradle:6.0.0-M2"
-    implementation "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
-    }
-}
-
-group "app"
-version "0.0.1-SNAPSHOT"
-
+plugins {
     id "eclipse"
     id "idea"
     id "war"
@@ -21,6 +6,10 @@ version "0.0.1-SNAPSHOT"
     id "org.graceframework.asset-pipeline"
     id "com.github.erdi.webdriver-binaries"
     id "org.graceframework.grace-gsp"
+}
+
+group "app"
+version "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
