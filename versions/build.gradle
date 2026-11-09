@@ -1,13 +1,12 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://repo.grails.org/grails/core" }
         maven { url "https://repo.gradle.org/gradle/libs-releases" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.0"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.1"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -25,7 +24,6 @@ apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
 }
 
 configurations {
@@ -71,7 +69,7 @@ dependencies {
     runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.0"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.1"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
