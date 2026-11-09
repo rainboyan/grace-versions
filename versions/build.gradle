@@ -1,12 +1,13 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
         maven { url "https://repo.gradle.org/gradle/libs-releases" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.1.4"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.0"
         classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
@@ -24,10 +25,14 @@ apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
+    maven { url "https://repo.grails.org/grails/core" }
 }
 
 configurations {
     developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
 }
 
 dependencies {
@@ -38,7 +43,6 @@ dependencies {
     implementation "org.graceframework.plugins:cache"
     implementation "org.graceframework.plugins:events"
     implementation "org.graceframework.plugins:fields"
-    implementation "org.graceframework.plugins:gsp"
     implementation "org.graceframework.plugins:hibernate5"
     implementation "org.graceframework.plugins:scaffolding"
     implementation "org.graceframework:grace-boot"
@@ -49,8 +53,10 @@ dependencies {
     implementation "org.graceframework:grace-plugin-databinding"
     implementation "org.graceframework:grace-plugin-datasource"
     implementation "org.graceframework:grace-plugin-domain-class"
+    implementation "org.graceframework:grace-plugin-gsp"
     implementation "org.graceframework:grace-plugin-i18n"
     implementation "org.graceframework:grace-plugin-interceptors"
+    implementation "org.graceframework:grace-plugin-management"
     implementation "org.graceframework:grace-plugin-rest"
     implementation "org.graceframework:grace-plugin-services"
     implementation "org.graceframework:grace-plugin-url-mappings"
@@ -65,7 +71,7 @@ dependencies {
     runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.1.4"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.0"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
@@ -75,6 +81,10 @@ dependencies {
     testImplementation "org.seleniumhq.selenium:selenium-support:4.2.2"
     testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.2.2"
     testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.2.2"
+}
+
+java {
+    sourceCompatibility = '11'
 }
 
 bootRun {
