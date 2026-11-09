@@ -18,28 +18,14 @@ Handy repo/script to compare fresh `create-app` versions of Grails/Grace so you 
 
 Just compare across tags:
 
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.0...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.1...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.2...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.3...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.4...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.5...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.6...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.7...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.8...v2022.2.9
-* https://github.com/rainboyan/grace-versions/compare/v2022.2.9...v2023.0.0
+* https://github.com/rainboyan/grace-versions/compare/v2022.2.9...v2023.0.0-M1
+* https://github.com/rainboyan/grace-versions/compare/v2023.0.0-M1...v2023.0.0-M2
+* https://github.com/rainboyan/grace-versions/compare/v2023.0.0-M1...v2023.0.0-M3
 
 From the git cli:
 
 ```
-git diff v2022.2.0..v2022.2.9
-git diff v2022.2.1..v2022.2.9
-git diff v2022.2.2..v2022.2.9
-git diff v2022.2.3..v2022.2.9
-git diff v2022.2.4..v2022.2.9
-git diff v2022.2.5..v2022.2.9
-git diff v2022.2.6..v2022.2.9
-git diff v2022.2.7..v2022.2.9
-git diff v2022.2.8..v2022.2.9
-git diff v2022.2.9..v2023.0.0
+git diff v2022.2.9..v2023.0.0-M1
+git diff v2023.0.0-M1..v2023.0.0-M2
+git diff v2023.0.0-M1..v2023.0.0-M3
 ```

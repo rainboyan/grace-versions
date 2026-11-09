@@ -1,44 +1,49 @@
 buildscript {
     repositories {
-        mavenCentral()
-        maven { url "https://repo.gradle.org/gradle/libs-releases" }
-        maven { url "https://plugins.gradle.org/m2/" }
+    mavenCentral()
+    maven { url "https://repo.grails.org/grails/core" }
+    maven { url "https://repo.gradle.org/gradle/libs-releases" }
+    maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:5.2.7"
-        classpath "org.graceframework.plugins:database-migration:5.2.7"
-        classpath "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
+    implementation "org.graceframework:grace-gradle-plugin:$graceVersion"
+    implementation "org.graceframework.plugins:asset-pipeline-gradle:5.0.2"
+    implementation "com.github.erdi:webdriver-binaries-gradle-plugin:3.2"
     }
 }
 
+version "0.1"
 group "app"
-version "0.0.1-SNAPSHOT"
 
-apply plugin: "eclipse"
-apply plugin: "idea"
-apply plugin: "war"
-apply plugin: "org.graceframework.grace-web"
-apply plugin: "org.graceframework.asset-pipeline"
-apply plugin: "com.github.erdi.webdriver-binaries"
-apply plugin: "org.graceframework.grace-gsp"
+    id "eclipse"
+    id "idea"
+    id "war"
+    id "org.graceframework.grace-web"
+    id "org.graceframework.asset-pipeline"
+    id "com.github.erdi.webdriver-binaries"
+    id "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
+    maven { url "https://repo.grails.org/grails/core" }
 }
 
 configurations {
     developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
 }
 
 dependencies {
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.graceframework:grace-console"
     implementation "org.graceframework.plugins:async"
     implementation "org.graceframework.plugins:cache"
-    implementation "org.graceframework.plugins:database-migration"
     implementation "org.graceframework.plugins:events"
     implementation "org.graceframework.plugins:fields"
+    implementation "org.graceframework.plugins:gsp"
     implementation "org.graceframework.plugins:hibernate5"
     implementation "org.graceframework.plugins:scaffolding"
     implementation "org.graceframework:grace-boot"
@@ -49,13 +54,12 @@ dependencies {
     implementation "org.graceframework:grace-plugin-databinding"
     implementation "org.graceframework:grace-plugin-datasource"
     implementation "org.graceframework:grace-plugin-domain-class"
-    implementation "org.graceframework:grace-plugin-gsp"
     implementation "org.graceframework:grace-plugin-i18n"
     implementation "org.graceframework:grace-plugin-interceptors"
-    implementation "org.graceframework:grace-plugin-management"
     implementation "org.graceframework:grace-plugin-rest"
     implementation "org.graceframework:grace-plugin-services"
     implementation "org.graceframework:grace-plugin-url-mappings"
+    implementation "org.hibernate:hibernate-core:5.6.15.Final"
     implementation "org.springframework.boot:spring-boot-autoconfigure"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-logging"
@@ -63,20 +67,19 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation"
     profile "org.graceframework.profiles:web"
     runtimeOnly "com.h2database:h2"
+    runtimeOnly "javax.xml.bind:jaxb-api:2.3.1"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
-    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.2.7"
+    runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
+    runtimeOnly "org.graceframework.plugins:asset-pipeline-plugin:5.0.2"
+    testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.graceframework.plugins:geb"
     testImplementation "org.graceframework:grace-test-support"
     testImplementation "org.mockito:mockito-core"
-    testImplementation "org.seleniumhq.selenium:selenium-api:4.2.2"
-    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.2.2"
-    testImplementation "org.seleniumhq.selenium:selenium-support:4.2.2"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.2.2"
-    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.2.2"
-}
-
-java {
-    sourceCompatibility = '11'
+    testImplementation "org.seleniumhq.selenium:selenium-api:4.16.1"
+    testImplementation "org.seleniumhq.selenium:selenium-remote-driver:4.16.1"
+    testImplementation "org.seleniumhq.selenium:selenium-support:4.16.1"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.16.1"
+    testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.16.1"
 }
 
 bootRun {
@@ -101,24 +104,30 @@ tasks.withType(Test) {
     useJUnitPlatform()
 }
 
+
 assets {
     minifyJs = true
     minifyCss = true
-    skipNonDigests = true
 }
 
 webdriverBinaries {
-    chromedriver {
-        version = '122.0.6260.0'
-        fallbackTo32Bit = true
+    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
+        chromedriver {
+            version = '2.45.0'
+            fallbackTo32Bit = true
+        }
+        geckodriver '0.30.0'
     }
-    geckodriver '0.33.0'
 }
 
 tasks.withType(Test) {
-    useJUnitPlatform()
     systemProperty "geb.env", System.getProperty('geb.env')
     systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
-    systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
+    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
+        systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
+        systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
+    } else {
+        systemProperty 'webdriver.chrome.driver', "${System.getenv('CHROMEWEBDRIVER')}/chromedriver"
+        systemProperty 'webdriver.gecko.driver', "${System.getenv('GECKOWEBDRIVER')}/geckodriver"
+    }
 }
