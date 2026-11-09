@@ -23,8 +23,6 @@ spring:
                 - '*.properties'
     jpa:
         open-in-view: false
-    liquibase:
-        enabled: false
 management:
     endpoints:
         enabled-by-default: true
